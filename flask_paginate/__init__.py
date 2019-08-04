@@ -441,9 +441,12 @@ class Pagination(object):
         s.append(self.prev_page)
         for page in self.pages:
             if self.format_number:
-                s.append(
-                    format_decimal(self.single_page(page),
-                                   locale=self.country_code) if page else self.gap_marker_fmt)
+                try:
+                    s.append(
+                        format_decimal(self.single_page(page),
+                                       locale=self.country_code) if page else self.gap_marker_fmt)
+                except:
+                    s.append(self.single_page(page) if page else self.gap_marker_fmt)
             else:
                 s.append(self.single_page(page) if page else self.gap_marker_fmt)
         s.append(self.next_page)
