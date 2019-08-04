@@ -469,7 +469,7 @@ class Pagination(object):
         page_msg = self.search_msg if self.search else self.display_msg
         if self.format_total:
             try:
-                total_text = format_number(self.total, locale=self.country_code)
+                total_text = format_decimal(self.total, locale=self.country_code)
             except:
                 total_text = '{0}'.format(self.total)
         else:
@@ -477,8 +477,8 @@ class Pagination(object):
 
         if self.format_number:
             try:
-                start_text = format_number(start, locale=self.country_code)
-                end_text = format_number(end, locale=self.country_code)
+                start_text = format_decimal(start, locale=self.country_code)
+                end_text = format_decimal(end, locale=self.country_code)
             except:
                 start_text = start
                 end_text = end
